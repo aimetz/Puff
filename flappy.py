@@ -21,10 +21,10 @@ class Wall:
             self.x2 = width
         if self.x2 is not None:
             self.x2 += velocity
-        if self.x1 < 0:
+        if self.x1 < -75:
             self.w1 = random.randint(.2*height//1, .8*height//1)
             self.x1 = width
-        if self.x2 is not None and self.x2 < 0:
+        if self.x2 is not None and self.x2 < -75:
             self.w2 = random.randint(.2*height//1, .8*height//1)
             self.x2 = width        
 
