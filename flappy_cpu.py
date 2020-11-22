@@ -80,8 +80,8 @@ def cpu(bird, walls, width, i):
         wall = (walls.x1, walls.w1)
     else:
         wall = (walls.x2, walls.w2)
-    if i%60== 0:
-        if bird.position[1]>wall[1]-38:
+    if i%10== 0:
+        if bird.position[1]>wall[1]-30:
             bird.velocity = Vector2(0, -.666)
 
 
