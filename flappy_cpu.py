@@ -22,14 +22,14 @@ class Wall:
         if self.x2 is not None:
             self.x2 += velocity
         if self.x1 < -75:
-            self.w1 = random.randint(.2*height//1, .8*height//1)
+            self.w1 = random.randint(.3*height//1, .9*height//1)
             self.x1 = width
         if self.x2 is not None and self.x2 < -75:
-            self.w2 = random.randint(.2*height//1, .8*height//1)
+            self.w2 = random.randint(.3*height//1, .9*height//1)
             self.x2 = width        
 
 def draw_wall(wall_height, x, hole, color, screen, height):
-    pygame.draw.rect(screen, color, (x, 0, hole, wall_height-2.5*hole))
+    pygame.draw.rect(screen, color, (x, 0, hole, wall_height-2.3*hole))
     pygame.draw.rect(screen, color, (x, wall_height, hole, height - wall_height))
     
 
@@ -64,10 +64,10 @@ def main():
         if walls.x2 is not None:
             draw_wall(walls.w2, walls.x2, 75, red, screen, height)
         if -95<(walls.x1-width/5)<20:
-            if not (22<(walls.w1-bird.position[1])<163):
+            if not (22<(walls.w1-bird.position[1])<148):
                 sys.exit()
         if walls.x2 is not None and -95<(walls.x2-width/5)<20:
-            if not (22<(walls.w2-bird.position[1])<163):
+            if not (22<(walls.w2-bird.position[1])<148):
                 sys.exit()
         bird.velocity += gravity
         bird.position += bird.velocity
@@ -76,12 +76,11 @@ def main():
         pygame.display.update()
 
 def cpu(bird, walls, width, i):
-    if walls.x2 is None or width/5 -75 < walls.x1 < walls.x2:
+    if walls.x2 is None or width/5 -100 < walls.x1 < walls.x2:
         wall = (walls.x1, walls.w1)
     else:
         wall = (walls.x2, walls.w2)
-    if i%10== 0:
-        if bird.position[1]>wall[1]-30:
+    if bird.position[1]>wall[1]-15:
             bird.velocity = Vector2(0, -.666)
 
 
